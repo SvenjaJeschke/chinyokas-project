@@ -49,7 +49,7 @@ export default {
             this.loading = true;
             if (this.newUrl) {
                 this.axios
-                    .post('http://localhost:8080/backend/api/createPlaylist.php', 
+                    .post('http://localhost:8080/backend/api/playlist/create.php', 
                         { params: { name: this.newName, url: this.newUrl } }, 
                         { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
                     .then(() => {
@@ -65,7 +65,7 @@ export default {
         },
         getPlaylists() {
             this.loading = true;
-            this.axios.get('http://localhost:8080/backend/api/getPlaylists.php').then(response => {
+            this.axios.get('http://localhost:8080/backend/api/playlist/get.php').then(response => {
                 this.urls = response.data;
             }).catch(error => {
                 console.log(error);
@@ -84,7 +84,5 @@ export default {
 </script>
 
 <style scoped>
-    h1 {
-        font-size: 20pt;
-    }
+
 </style>

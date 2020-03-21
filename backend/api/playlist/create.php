@@ -2,8 +2,8 @@
 
 header("Access-Control-Allow-Origin: *");
 
-require('../Playlist.php');
-require('../helpers.php');
+require('../../Playlist.php');
+require('../../helpers.php');
 
 $body = file_get_contents('php://input');
 $json = json_decode($body, true);

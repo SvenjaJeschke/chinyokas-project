@@ -2,7 +2,7 @@
 
 header("Access-Control-Allow-Origin: *");
 
-require('../Playlist.php');
+require('../../Playlist.php');
 
 $urls = Playlist::urls();
 

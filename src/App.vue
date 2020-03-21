@@ -7,11 +7,13 @@
             </b-navbar-item>
         </template>
         <template slot="end">
-            <b-navbar-item tag="router-link" to="/notes">
-                Notizen
-            </b-navbar-item>
-            <b-navbar-item tag="router-link" to="/music">
-                Musik
+            <b-navbar-item 
+              v-for="(navItem, index) in navItems" 
+              :key="index" 
+              tag="router-link" 
+              :to="navItem.route"
+            >
+                {{ navItem.name }}
             </b-navbar-item>
         </template>
     </b-navbar>
@@ -23,7 +25,16 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data() {
+    return {
+      navItems: [
+        { name: 'Blog', route: '/blog-view' },
+        { name: 'Notes', route: '/notes' },
+        { name: 'Music', route: '/music' }
+      ]
+    }
+  }
 }
 </script>
 
