@@ -68,7 +68,7 @@ export default {
         },
         getPlaylists() {
             this.loading = true;
-            this.axios.get('http://localhost:8080/backend/api/playlist/get.php').then(response => {
+            this.axios.get('http://localhost:8080/backend/api/playlist/url.php').then(response => {
                 this.urls = response.data;
             }).catch(error => {
                 console.log(error);

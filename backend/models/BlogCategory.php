@@ -1,5 +1,7 @@
 <?php
 
+require('../../Database.php');
+
 class BlogCategory {
     public $id;
     public $name;
