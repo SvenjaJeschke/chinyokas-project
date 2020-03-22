@@ -1,11 +1,14 @@
 <template>
     <div>
         <h1>Chinyokas Blog</h1>
-        <create-blog-category-modal></create-blog-category-modal>
-        <b-button type="is-success" style="color: black; margin: 5px">
-            <b-icon pack="fas" icon="plus" style="margin-right: 3px"></b-icon>
-            Create new blog post
-        </b-button>
+        <div style="display: flex">
+            <div style="flex-grow: 1; display: inline-block"></div>
+            <create-blog-category-modal></create-blog-category-modal>
+            <b-button type="is-success" style="color: black; margin: 5px; display: inline-block;" tag="router-link" to="/blog-create">
+                <b-icon pack="fas" icon="plus" style="margin-right: 3px"></b-icon>
+                Create new blog post
+            </b-button>
+        </div>
         <b-collapse
             class="card"
             animation="slide"

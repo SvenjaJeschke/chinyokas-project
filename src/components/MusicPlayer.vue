@@ -13,10 +13,13 @@
         <b-field label="Playlist Name:" style="width: 400px">
             <b-input v-model="newName"></b-input>
         </b-field>
-        <b-field label="Spotify Playlist URL:" style="width: 800px">
-            <b-input v-model="newUrl"></b-input>
-        </b-field>
+        <b-tooltip label="Go to playlist on spotify -> Share -> Copy Playlist Link" position="is-bottom">
+            <b-field label="Spotify Playlist URL:" style="width: 800px">
+                <b-input v-model="newUrl"></b-input>
+            </b-field>
+        </b-tooltip>
         <b-button 
+            style="margin: 30px"
             type="is-success" 
             outlined 
             @click="createNewPlaylist"

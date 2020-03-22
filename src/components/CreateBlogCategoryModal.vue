@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <b-button type="is-success" style="color: black; margin: 5px" @click="showCreateBlogCategoryModal = true">
+    <div style="display: inline-block">
+        <b-button type="is-success" style="color: black; margin: 5px; display: inline-block" @click="showCreateBlogCategoryModal = true">
             <b-icon pack="fas" icon="folder-plus" style="margin-right: 3px"></b-icon>
             Add new blog category
         </b-button>

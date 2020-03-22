@@ -4,6 +4,8 @@ import Notes from './components/Notes';
 import Vue from 'vue';
 import MusicPlayer from './components/MusicPlayer';
 import BlogView from './components/BlogView';
+import CreateBlogPost from './components/CreateBlogPost';
+import ViewBlogPost from './components/ViewBlogPost';
 
 Vue.use(VueRouter);
 
@@ -28,6 +30,16 @@ const router = new VueRouter({
             path: '/blog-view',
             name: 'blog-view',
             component: BlogView
+        },
+        {
+            path: '/blog-create',
+            name: 'blog-create',
+            component: CreateBlogPost
+        },
+        {
+            path: '/view-blog-post/:id',
+            name: 'view-blog-post',
+            component: ViewBlogPost
         }
     ]
 })

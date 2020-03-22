@@ -1,7 +1,7 @@
 <?php
 
 class Database {
-    public function connect() {
+    public static function connect() {
         try {
             $pdo = new PDO('mysql:host=localhost;dbname=chinyokas_project', 'root', '');
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

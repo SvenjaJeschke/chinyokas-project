@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <b-navbar type="is-dark">
+    <b-navbar type="is-black">
         <template slot="brand">
             <b-navbar-item tag="router-link" to="/">
                 Chinyokas Dashboard
@@ -17,8 +17,8 @@
             </b-navbar-item>
         </template>
     </b-navbar>
-    <main>
-      <router-view></router-view>
+    <main class="content-wrapper">
+      <router-view class="page-content"></router-view>
     </main>
   </div>
 </template>
@@ -39,7 +39,22 @@ export default {
 </script>
 
 <style>
-  main {
-    margin: 20px;
-  }
+ 
+  .content-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.page-content {
+    width: 70%;
+    height: 100%;
+    border: cyan;
+    border-style: solid;
+    border-width: 2px;
+    border-top-width: 0px;
+    background-color: #1a1a1a;
+    padding: 10px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
 </style>
