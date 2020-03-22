@@ -3,7 +3,7 @@
 header("Access-Control-Allow-Origin: *");
 
 require('../../helpers.php');
-require('../../Post.php');
+require('../../models/Post.php');
 
 $id = $_GET['id'];
 

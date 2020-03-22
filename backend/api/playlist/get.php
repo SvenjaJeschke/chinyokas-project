@@ -2,8 +2,8 @@
 
 header("Access-Control-Allow-Origin: *");
 
-require('../../Playlist.php');
+require('../../controllers/PlaylistController.php');
 
-$urls = Playlist::urls();
+$urls = PlaylistController::urls();
 
 echo json_encode($urls);

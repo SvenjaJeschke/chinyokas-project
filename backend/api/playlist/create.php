@@ -2,7 +2,7 @@
 
 header("Access-Control-Allow-Origin: *");
 
-require('../../Playlist.php');
+require('../../controllers/PlaylistController.php');
 require('../../helpers.php');
 
 $body = file_get_contents('php://input');
@@ -17,4 +17,4 @@ array_insert($urlStringSplit, 3, 'embed');
 
 $url = implode('/', $urlStringSplit);
 
-Playlist::create($name, $url);
+PlaylistController::create($name, $url);

@@ -1,8 +1,8 @@
 <?php
 
-require('Database.php');
+require('../../Database.php');
 
-class Playlist {
+class PlaylistController {
 
     public function all() {
         $pdo = Database::connect();

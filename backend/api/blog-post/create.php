@@ -2,7 +2,7 @@
 
 header("Access-Control-Allow-Origin: *");
 
-require('../../BlogPostController.php');
+require('../../controllers/BlogPostController.php');
 require('../../helpers.php');
 
 $body = file_get_contents('php://input');
