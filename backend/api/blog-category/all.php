@@ -3,8 +3,8 @@
 header("Access-Control-Allow-Origin: *");
 
 require('../../helpers.php');
-require('../../BlogCategory.php');
+require('../../BlogCategoryController.php');
 
-$categories = BlogCategory::all();
+$categories = BlogCategoryController::all();
 
 echo json_encode($categories);

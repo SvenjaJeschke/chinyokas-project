@@ -48,7 +48,7 @@ export default {
 .page-content {
     width: 75%;
     height: 100%;
-    border: yellowgreen;
+    border: rgb(0, 155, 83);
     border-style: solid;
     border-width: 2px;
     border-top-width: 0px;

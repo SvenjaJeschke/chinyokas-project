@@ -2,7 +2,7 @@
 
 require('Database.php');
 
-class BlogPost {
+class BlogPostController {
     public static function create($postData) {
         if ($postData['title']) {
             $pdo = Database::connect();
@@ -24,15 +24,5 @@ class BlogPost {
             return 'Your new blog post was created.';
         }
         return 'Please enter a title.';
-    }
-
-    public static function get($id) {
-        $pdo = Database::connect();
-        $selectBlogPost = $pdo->prepare(
-            "select * from blog_posts where id = {$id}"
-        );
-        $selectBlogPost->execute();
-        $posts = $selectBlogPost->fetchAll(PDO::FETCH_OBJ);
-        return $posts[0];
     }
 }

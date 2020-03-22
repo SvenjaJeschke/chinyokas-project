@@ -1,31 +1,28 @@
 <?php
 
-require('Database.php');
-
 class BlogCategory {
-    public function create($name) {
-        $pdo = Database::connect();
-        if ($name) {
-            $statement = $pdo->prepare("insert into blog_categories (name) values ('{$name}')");
-            $statement->execute();
-            return "The category {$name} was created.";
-        }
-        return 'Please enter a valid name.';
+    public $id;
+    public $name;
+
+    public function __construct(int $id) {
+        $category = $this->select($id);
+        $this->castFields($category);
     }
 
-    public function all() {
+    protected function select(int $id) : stdClass 
+    {
         $pdo = Database::connect();
-        $categoryStatement = $pdo->prepare('select * from blog_categories');
-        $categoryStatement->execute();
-        $categories = $categoryStatement->fetchAll(PDO::FETCH_OBJ);
-        foreach ($categories as $category) {
-            $blogPostStatement = $pdo->prepare("select * from blog_posts where category_id = {$category->id}");
-            $blogPostStatement->execute();
-            $posts = $blogPostStatement->fetchAll(PDO::FETCH_OBJ);
-            if (count($posts) > 0) {
-                $category->posts = $posts;
-            }
-        }
-        return $categories;
+        $selectBlogCategory = $pdo->prepare(
+            "select * from blog_categories where id = {$id}"
+        );
+        $selectBlogCategory->execute();
+        $categories = $selectBlogCategory->fetchAll(PDO::FETCH_OBJ);
+        return $categories[0];
+    }
+
+    protected function castFields(stdClass $category)
+    {
+        $this->id = (int) $category->id;
+        $this->name = $category->name;
     }
 }

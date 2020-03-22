@@ -3,10 +3,10 @@
 header("Access-Control-Allow-Origin: *");
 
 require('../../helpers.php');
-require('../../BlogPost.php');
+require('../../Post.php');
 
 $id = $_GET['id'];
 
-$post = BlogPost::get($id);
+$post = new Post($id, true);
 
 echo json_encode($post);
