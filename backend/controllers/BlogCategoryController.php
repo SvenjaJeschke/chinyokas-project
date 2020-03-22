@@ -1,6 +1,6 @@
 <?php
 
-require('../../Database.php');
+require_once('../../Database.php');
 
 class BlogCategoryController {
     public function create($name) {

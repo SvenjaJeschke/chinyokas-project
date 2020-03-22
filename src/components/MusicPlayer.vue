@@ -2,7 +2,7 @@
     <div>
         <h1>Music</h1>
         <div v-if="!loading">
-            <div v-for="(url, index) in urls" :key="index" style="display: inline-block">
+            <div v-for="(url, index) in urls" :key="index" style="display: inline-block; width: 25%">
                 <spotify-player
                     :url="url" 
                 ></spotify-player>
@@ -19,9 +19,8 @@
             </b-field>
         </b-tooltip>
         <b-button 
-            style="margin: 30px"
+            style="margin: 30px; color: black"
             type="is-success" 
-            outlined 
             @click="createNewPlaylist"
         >
             Create
@@ -68,7 +67,7 @@ export default {
         },
         getPlaylists() {
             this.loading = true;
-            this.axios.get('http://localhost:8080/backend/api/playlist/url.php').then(response => {
+            this.axios.get('http://localhost:8080/backend/api/playlist/urls.php').then(response => {
                 this.urls = response.data;
             }).catch(error => {
                 console.log(error);

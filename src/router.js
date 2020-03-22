@@ -6,6 +6,7 @@ import MusicPlayer from './components/MusicPlayer';
 import BlogView from './components/BlogView';
 import CreateBlogPost from './components/CreateBlogPost';
 import ViewBlogPost from './components/ViewBlogPost';
+import EditBlogPost from './components/EditBlogPost';
 
 Vue.use(VueRouter);
 
@@ -40,6 +41,12 @@ const router = new VueRouter({
             path: '/view-blog-post/:id',
             name: 'view-blog-post',
             component: ViewBlogPost,
+            props: true
+        },
+        {
+            path: '/edit-blog-post/:id',
+            name: 'edit-blog-post',
+            component: EditBlogPost,
             props: true
         }
     ]

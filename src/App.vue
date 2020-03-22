@@ -48,11 +48,11 @@ export default {
 .page-content {
     width: 75%;
     height: 100%;
-    border: rgb(0, 155, 83);
+    border: rgb(0, 217, 255);
     border-style: solid;
     border-width: 2px;
     border-top-width: 0px;
-    background-color: #1a1a1a;
+    background-color: rgba(0, 0, 0, 0.9);
     padding: 10px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
