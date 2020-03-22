@@ -25,4 +25,14 @@ class BlogPost {
         }
         return 'Please enter a title.';
     }
+
+    public static function get($id) {
+        $pdo = Database::connect();
+        $selectBlogPost = $pdo->prepare(
+            "select * from blog_posts where id = {$id}"
+        );
+        $selectBlogPost->execute();
+        $posts = $selectBlogPost->fetchAll(PDO::FETCH_OBJ);
+        return $posts[0];
+    }
 }

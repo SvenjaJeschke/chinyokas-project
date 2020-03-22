@@ -37,7 +37,7 @@
                     <b-table :data="collapse.posts">
                         <template slot-scope="props">
                             <b-table-column field="title" label="Title" width="1200">
-                                <router-link :to="'/blog/' + props.row.id">
+                                <router-link :to="'/view-blog-post/' + props.row.id">
                                     {{ props.row.title }}
                                 </router-link>
                             </b-table-column>

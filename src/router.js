@@ -39,7 +39,8 @@ const router = new VueRouter({
         {
             path: '/view-blog-post/:id',
             name: 'view-blog-post',
-            component: ViewBlogPost
+            component: ViewBlogPost,
+            props: true
         }
     ]
 })

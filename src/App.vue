@@ -46,9 +46,9 @@ export default {
 }
 
 .page-content {
-    width: 70%;
+    width: 75%;
     height: 100%;
-    border: cyan;
+    border: yellowgreen;
     border-style: solid;
     border-width: 2px;
     border-top-width: 0px;
