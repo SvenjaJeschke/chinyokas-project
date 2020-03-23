@@ -14,8 +14,9 @@
             animation="slide"
             v-for="(collapse, index) of collapses"
             :key="index"
-            :open="openCollapseItem == index"
-            @open="openCollapseItem = index"
+            :open="openCollapseItems.includes(index)"
+            @open="openCollapseItems.push(index)"
+            @close="remove(openCollapseItems, index)"
             type="is-dark"
         >
             <div
@@ -66,7 +67,7 @@ export default {
     data() {
         return {
             collapses: [],
-            openCollapseItem: null,
+            openCollapseItems: [0, 1, 2],
             isLoading: false,
             admin: false
         }
@@ -104,11 +105,22 @@ export default {
                 .then(response => {
                     this.admin = response.data.admin;
                 })
+        },
+        remove(array, value) {
+            for (let i = 0; i < array.length; i++) {
+                if (array[i] === value) {
+                    array.splice(i, 1);
+                }
+            }
         }
     }
 }
 </script>
 
 <style scoped>
-
+    h1 {
+        border-bottom: white;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+    }
 </style>

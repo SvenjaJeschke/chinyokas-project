@@ -6,7 +6,7 @@
       'background-image': 'url(' + theme.backgroundImage + ')'
     }"
   >
-    <b-navbar :type="theme.navbarType">
+    <b-navbar :type="theme.navbarType" fixed-top>
         <template slot="brand">
             <b-navbar-item tag="router-link" to="/">
                 Chinyokas Dashboard

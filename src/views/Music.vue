@@ -9,7 +9,7 @@
             </div>
         </div>
         <b-button v-else loading type="is-dark" style="width: 300px"></b-button><br><br>
-        <h1>Add new Playlist</h1>
+        <h2>Add new Playlist</h2>
         <b-field label="Playlist Name:" style="width: 400px">
             <b-input v-model="newName"></b-input>
         </b-field>
@@ -86,5 +86,9 @@ export default {
 </script>
 
 <style scoped>
-
+    h1 {
+        border-bottom: white;
+        border-bottom-style: solid;
+        border-bottom-width: 1px;
+    }
 </style>
