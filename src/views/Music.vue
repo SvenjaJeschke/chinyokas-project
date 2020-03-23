@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import SpotifyPlayer from './SpotifyPlayer';
+import SpotifyPlayer from './../components/SpotifyPlayer';
 
 export default {
     components: {

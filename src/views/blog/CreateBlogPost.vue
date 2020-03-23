@@ -25,12 +25,31 @@
             </b-field>
         </div>
         <b-field label="Body">
-            <b-input type="textarea" v-model="post.body"></b-input>
+            <textarea-autosize
+                v-model="post.body"
+                :loading="isLoading" 
+                :disabled="isLoading"
+                :min-height="100"
+                :max-height="4000"
+                class="bodyinput"
+            />
         </b-field>
-        <b-button type="is-success" style="color: black" @click="create()" :loading="isLoading" :disabled="isLoading">
-            <b-icon pack="fas" icon="check" style="margin-right: 3px"></b-icon>
-            Create
-        </b-button>
+        <div style="display: flex;">
+            <b-button 
+                type="is-white" 
+                outlined
+                tag="router-link"
+                to="/blog-view"
+            >
+                <b-icon pack="fas" icon="arrow-left" style="margin-right: 3px"></b-icon>
+                Back
+            </b-button>
+            <div style="display: inline-block; flex-grow: 1"></div>
+            <b-button type="is-success" style="color: black" @click="create()" :loading="isLoading" :disabled="isLoading">
+                <b-icon pack="fas" icon="check" style="margin-right: 3px"></b-icon>
+                Create
+            </b-button>
+        </div>
     </div>
 </template>
 
@@ -86,6 +105,16 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+    .bodyinput {
+        width: 100%; 
+        padding: 5px; 
+        border-radius: 5px; 
+        border-color: #b5b5b5; 
+        box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1); 
+        background-color: white; 
+        border-radius: 4px; 
+        color: #363636; 
+        border: 1px solid transparent;
+    }
 </style>

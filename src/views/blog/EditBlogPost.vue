@@ -3,10 +3,19 @@
         <h1>Edit Post</h1>
         <div style="display: flex">
             <b-field label="Title" style="width: 50%">
-                <b-input v-model="post.title"></b-input>
+                <b-input 
+                    v-model="post.title" 
+                    :loading="isLoading" 
+                    :disabled="isLoading"
+                ></b-input>
             </b-field>
             <b-field label="Category" style="margin-left: 10px; width: 30%">
-                <b-select v-model="post.category_id" expanded>
+                <b-select 
+                    v-model="post.category_id" 
+                    expanded 
+                    :loading="isLoading" 
+                    :disabled="isLoading"
+                >
                     <option 
                         v-for="category in categories" 
                         :key="category.id" 
@@ -20,17 +29,48 @@
                 <b-tooltip 
                     label="If you don't check this option, the blog post will be only visible to you."
                 >
-                    <b-checkbox v-model="post.is_public">{{ post.is_public ? 'show it to the world' : 'no, save as draft' }}</b-checkbox>
+                    <b-checkbox 
+                        v-model="post.is_public"
+                        :loading="isLoading" 
+                        :disabled="isLoading"
+                    >
+                        {{ post.is_public ? 'show it to the world' : 'no, save as draft' }}
+                    </b-checkbox>
                 </b-tooltip>
             </b-field>
         </div>
         <b-field label="Body">
-            <b-input type="textarea" v-model="post.body"></b-input>
+            <textarea-autosize
+                v-model="post.body"
+                :loading="isLoading" 
+                :disabled="isLoading"
+                :min-height="100"
+                :max-height="4000"
+                class="bodyinput"
+            />
         </b-field>
-        <b-button type="is-success" style="color: black" @click="update()" :loading="isLoading" :disabled="isLoading">
-            <b-icon pack="fas" icon="check" style="margin-right: 3px"></b-icon>
-            Save
-        </b-button>
+        <div style="display: flex">
+            <b-button 
+                type="is-white" 
+                outlined
+                tag="router-link"
+                :to="'/view-blog-post/' + id"
+            >
+                <b-icon pack="fas" icon="arrow-left" style="margin-right: 3px"></b-icon>
+                Back
+            </b-button>
+            <div style="display: inline-block; flex-grow: 1"></div>
+            <b-button 
+                type="is-success" 
+                style="color: black" 
+                @click="update()" 
+                :loading="isLoading" 
+                :disabled="isLoading"
+            >
+                <b-icon pack="fas" icon="check" style="margin-right: 3px"></b-icon>
+                Save
+            </b-button>
+        </div>
     </div>
 </template>
 
@@ -55,6 +95,7 @@ export default {
     },
     methods: {
         getCategories() {
+            this.isLoading = true;
             this.axios
                 .get('http://localhost:8080/backend/api/blog-category/all.php')
                 .then(response => {
@@ -62,7 +103,14 @@ export default {
                 })
                 .catch(error => {
                     console.log(error);
-                });
+                    this.$buefy.toast.open({
+                        message: 'Something went wrong while loading the data... Please reload the page.',
+                        type: 'is-danger'
+                    })
+                })
+                .finally(() => {
+                    this.isLoading = false;
+                })
         },
         update() {
             this.isLoading = true;
@@ -85,6 +133,7 @@ export default {
                 });
         },
         getPost() {
+            this.isLoading = true;
             if (this.id) {
                 this.axios
                     .get('http://localhost:8080/backend/api/blog-post/get.php', 
@@ -96,7 +145,10 @@ export default {
                     })
                     .catch(error => {
                         console.log(error);
-                    });
+                    })
+                    .finally(() => {
+                        this.isLoading = false;
+                    })
             } else {
                 this.$router.push({ name: 'blog-view' });
             }
@@ -106,5 +158,15 @@ export default {
 </script>
 
 <style scoped>
-
+    .bodyinput {
+        width: 100%; 
+        padding: 5px; 
+        border-radius: 5px; 
+        border-color: #b5b5b5; 
+        box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1); 
+        background-color: white; 
+        border-radius: 4px; 
+        color: #363636; 
+        border: 1px solid transparent;
+    }
 </style>

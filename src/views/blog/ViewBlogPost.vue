@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1 class="blogheading">View Blog Post</h1>
-        <h5>in <b>{{ post.category.name }}</b></h5>
+        <h5 v-if="post.category">in <b>{{ post.category.name }}</b></h5>
         <br>
         <div class="card">
             <header class="card-header" style="display: flex">
@@ -54,6 +54,10 @@ export default {
                     })
                     .catch(error => {
                         console.log(error);
+                        this.$buefy.toast.open({
+                            message: 'Something went wrong while loading the data... Please reload the page.',
+                            type: 'is-danger'
+                        })
                     });
             } else {
                 this.$router.push({ name: 'blog-view' });

@@ -52,11 +52,12 @@
                 </div>
             </div>
         </b-collapse>
+        <b-progress v-if="isLoading" type="is-success"></b-progress>
     </div>
 </template>
 
 <script>
-import CreateBlogCategoryModal from './CreateBlogCategoryModal';
+import CreateBlogCategoryModal from './../components/createBlogCategoryModal/CreateBlogCategoryModal';
 
 export default {
     components: {
@@ -65,7 +66,8 @@ export default {
     data() {
         return {
             collapses: [],
-            openCollapseItem: 0
+            openCollapseItem: null,
+            isLoading: false
         }
     },
     created() {
@@ -73,6 +75,7 @@ export default {
     },
     methods: {
         getCategories() {
+            this.isLoading = true;
             this.axios
                 .get('http://localhost:8080/backend/api/blog-category/all.php')
                 .then(response => {
@@ -80,6 +83,9 @@ export default {
                 })
                 .catch(error => {
                     console.log(error);
+                })
+                .finally(() => {
+                    this.isLoading = false;
                 })
         }
     }

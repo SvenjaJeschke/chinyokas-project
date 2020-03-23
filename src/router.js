@@ -1,12 +1,12 @@
 import VueRouter from 'vue-router';
-import Home from './components/Home';
-import Notes from './components/Notes';
+import Home from './views/Home';
+import Notes from './views/Notes';
 import Vue from 'vue';
-import MusicPlayer from './components/MusicPlayer';
-import BlogView from './components/BlogView';
-import CreateBlogPost from './components/CreateBlogPost';
-import ViewBlogPost from './components/ViewBlogPost';
-import EditBlogPost from './components/EditBlogPost';
+import Music from './views/Music';
+import Blog from './views/Blog';
+import CreateBlogPost from './views/blog/CreateBlogPost';
+import ViewBlogPost from './views/blog/ViewBlogPost';
+import EditBlogPost from './views/blog/EditBlogPost';
 
 Vue.use(VueRouter);
 
@@ -25,12 +25,12 @@ const router = new VueRouter({
         {
             path: '/music',
             name: 'music',
-            component: MusicPlayer
+            component: Music
         },
         {
             path: '/blog-view',
             name: 'blog-view',
-            component: BlogView
+            component: Blog
         },
         {
             path: '/blog-create',

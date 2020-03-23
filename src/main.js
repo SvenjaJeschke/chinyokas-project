@@ -6,8 +6,10 @@ import 'buefy/dist/buefy.css';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import VueDayjs from 'vue-dayjs-plugin';
+import TextareaAutosize from 'vue-textarea-autosize';
  
-Vue.use(VueAxios, axios)
+Vue.use(TextareaAutosize);
+Vue.use(VueAxios, axios);
 Vue.use(VueDayjs);
 Vue.use(Buefy);
 
