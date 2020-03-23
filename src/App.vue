@@ -3,10 +3,11 @@
     id="app"
     :style="{
       'background-attachment': 'fixed',
-      'background-image': 'url(' + theme.backgroundImage + ')'
+      'background-image': 'url(' + theme.backgroundImage + ')',
+      'background-size': 'cover'
     }"
   >
-    <b-navbar :type="theme.navbarType" fixed-top>
+    <b-navbar :type="theme.navbarType">
         <template slot="brand">
             <b-navbar-item tag="router-link" to="/">
                 Chinyokas Dashboard
@@ -30,15 +31,13 @@
 </template>
 
 <script>
+import {EventBus} from './event-bus.js';
+
 export default {
   name: 'App',
   data() {
     return {
-      theme: {
-        backgroundImage: 'https://wallpapermemory.com/uploads/676/fantasy-forest-wallpaper-full-hd-1920x1080-20410.jpg',
-        borderColor: 'rgb(0, 217, 255)',
-        navbarType: 'is-dark'
-      },
+      theme: {},
       admin: false
     }
   },
@@ -80,6 +79,12 @@ export default {
   },
   created() {
     this.checkAdmin();
+    this.getTheme();
+  },
+  mounted() {
+    EventBus.$on('theme-was-changed', () => {
+      this.getTheme()
+    });
   },
   methods: {
     checkAdmin() {
@@ -91,6 +96,20 @@ export default {
           { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
         .then(response => {
           this.admin = response.data.admin;
+        })
+    },
+    getTheme() {
+      this.axios
+        .get('http://localhost:8080/backend/api/theme/current.php')
+        .then(response => {
+          this.theme = response.data;
+        })
+        .catch(error => {
+          console.log(error);
+              this.$buefy.toast.open({
+                  message: 'Something went wrong while loading the data... Please reload the page.',
+                  type: 'is-danger'
+              })
         })
     }
   }
