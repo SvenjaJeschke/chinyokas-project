@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>Chinyokas Blog</h1>
-        <div style="display: flex">
+        <div v-if="admin" style="display: flex">
             <div style="flex-grow: 1; display: inline-block"></div>
             <create-blog-category-modal></create-blog-category-modal>
             <b-button type="is-success" style="color: black; margin: 5px; display: inline-block;" tag="router-link" to="/blog-create">
@@ -67,25 +67,42 @@ export default {
         return {
             collapses: [],
             openCollapseItem: null,
-            isLoading: false
+            isLoading: false,
+            admin: false
         }
     },
     created() {
         this.getCategories();
+        this.checkAdmin();
     },
     methods: {
         getCategories() {
             this.isLoading = true;
             this.axios
-                .get('http://localhost:8080/backend/api/blog-category/all.php')
+                .get('http://localhost:8080/backend/api/blog-category/all-with-posts.php')
                 .then(response => {
                     this.collapses = response.data;
                 })
                 .catch(error => {
                     console.log(error);
+                    this.$buefy.toast.open({
+                        message: 'Something went wrong while loading the data... Please reload the page.',
+                        type: 'is-danger'
+                    })
                 })
                 .finally(() => {
                     this.isLoading = false;
+                })
+        },
+        checkAdmin() {
+            const password = localStorage.getItem('password');
+            this.axios
+                .get(
+                    'http://localhost:8080/backend/api/auth/checkadmin.php',
+                    { params: { password: password } },
+                    { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
+                .then(response => {
+                    this.admin = response.data.admin;
                 })
         }
     }

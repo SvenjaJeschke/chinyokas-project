@@ -18,7 +18,7 @@
                     <div v-html="post.body"></div>
                 </div>
             </div>
-            <footer class="card-footer">
+            <footer v-if="admin" class="card-footer">
                 <router-link :to="'/edit-blog-post/' + post.id" class="card-footer-item">Edit</router-link>
             </footer>
         </div>
@@ -35,10 +35,12 @@ export default {
     },
     data() {
         return {
-            post: {}
+            post: {},
+            admin: false
         }
     },
     created() {
+        this.checkAdmin();
         this.getPost();
     },
     methods: {
@@ -62,6 +64,17 @@ export default {
             } else {
                 this.$router.push({ name: 'blog-view' });
             }
+        },
+        checkAdmin() {
+            const password = localStorage.getItem('password');
+            this.axios
+                .get(
+                    'http://localhost:8080/backend/api/auth/checkadmin.php',
+                    { params: { password: password } },
+                    { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
+                .then(response => {
+                    this.admin = response.data.admin;
+                })
         }
     }
 }

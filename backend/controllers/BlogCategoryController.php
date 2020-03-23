@@ -13,7 +13,7 @@ class BlogCategoryController {
         return 'Please enter a valid name.';
     }
 
-    public function all() {
+    public function allWithPosts() {
         $pdo = Database::connect();
         $categoryStatement = $pdo->prepare('select * from blog_categories');
         $categoryStatement->execute();
@@ -26,6 +26,14 @@ class BlogCategoryController {
                 $category->posts = $posts;
             }
         }
+        return $categories;
+    }
+
+    public function all() {
+        $pdo = Database::connect();
+        $categoryStatement = $pdo->prepare('select * from blog_categories');
+        $categoryStatement->execute();
+        $categories = $categoryStatement->fetchAll(PDO::FETCH_OBJ);
         return $categories;
     }
 }

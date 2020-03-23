@@ -6,7 +6,7 @@
                 <b-input v-model="post.title"></b-input>
             </b-field>
             <b-field label="Category" style="margin-left: 10px; width: 30%">
-                <b-select v-model="post.category_id" expanded>
+                <b-select v-model="post.category_id" expanded :loading="isLoading" :disabled="isLoading">
                     <option 
                         v-for="category in categories" 
                         :key="category.id" 
@@ -72,6 +72,7 @@ export default {
     },
     methods: {
         getCategories() {
+            this.isLoading = true;
             this.axios
                 .get('http://localhost:8080/backend/api/blog-category/all.php')
                 .then(response => {
@@ -79,7 +80,14 @@ export default {
                 })
                 .catch(error => {
                     console.log(error);
-                });
+                    this.$buefy.toast.open({
+                        message: 'Something went wrong while loading the data... Please reload the page.',
+                        type: 'is-danger'
+                    })
+                })
+                .finally(() => {
+                    this.isLoading = false;
+                })
         },
         create() {
             this.isLoading = true;

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import VueRouter from 'vue-router';
 import Home from './views/Home';
 import Notes from './views/Notes';
@@ -50,6 +51,28 @@ const router = new VueRouter({
             props: true
         }
     ]
+})
+
+router.beforeEach((to, from, next) => {
+    const adminRoutes = ['blog-create', 'edit-blog-post'];
+    if (adminRoutes.includes(to.name)) {
+        const password = localStorage.getItem('password');
+        axios
+            .get(
+                'http://localhost:8080/backend/api/auth/checkadmin.php',
+                { params: { password: password } },
+                { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
+            .then(response => {
+                if (!response.data.admin) {
+                    console.log('Not allowed.');
+                    return next({name: 'home'});
+                } else {
+                    next();
+                }
+            })
+    } else {
+        next();
+    }
 })
 
 export default router;
