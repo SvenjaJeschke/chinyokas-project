@@ -8,6 +8,7 @@ import Blog from './views/Blog';
 import CreateBlogPost from './views/blog/CreateBlogPost';
 import ViewBlogPost from './views/blog/ViewBlogPost';
 import EditBlogPost from './views/blog/EditBlogPost';
+import Theme from './views/Theme';
 
 Vue.use(VueRouter);
 
@@ -29,8 +30,8 @@ const router = new VueRouter({
             component: Music
         },
         {
-            path: '/blog-view',
-            name: 'blog-view',
+            path: '/blog',
+            name: 'blog',
             component: Blog
         },
         {
@@ -49,12 +50,17 @@ const router = new VueRouter({
             name: 'edit-blog-post',
             component: EditBlogPost,
             props: true
+        },
+        {
+            path: '/theme',
+            name: 'theme',
+            component: Theme
         }
     ]
 })
 
 router.beforeEach((to, from, next) => {
-    const adminRoutes = ['blog-create', 'edit-blog-post'];
+    const adminRoutes = ['blog-create', 'edit-blog-post', 'theme'];
     if (adminRoutes.includes(to.name)) {
         const password = localStorage.getItem('password');
         axios

@@ -37,7 +37,7 @@
                 <div class="content">
                     <b-table :data="collapse.posts">
                         <template slot-scope="props">
-                            <b-table-column field="title" label="Title" width="1200">
+                            <b-table-column field="title" label="Title" width="900">
                                 <router-link :to="'/view-blog-post/' + props.row.id">
                                     {{ props.row.title }}
                                 </router-link>
@@ -72,9 +72,20 @@ export default {
             admin: false
         }
     },
+    watch: {
+        admin() {
+            this.checkAdmin();
+        }
+    },
     created() {
         this.getCategories();
         this.checkAdmin();
+        if (localStorage.getItem('openCollapseItems')) {
+            this.openCollapseItems = JSON.parse(localStorage.getItem('openCollapseItems'));
+        }
+    },
+    beforeDestroy() {
+        localStorage.setItem('openCollapseItems', JSON.stringify(this.openCollapseItems));
     },
     methods: {
         getCategories() {
@@ -118,9 +129,4 @@ export default {
 </script>
 
 <style scoped>
-    h1 {
-        border-bottom: white;
-        border-bottom-style: solid;
-        border-bottom-width: 1px;
-    }
 </style>

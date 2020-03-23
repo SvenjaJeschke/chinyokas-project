@@ -39,7 +39,7 @@
                 type="is-white" 
                 outlined
                 tag="router-link"
-                to="/blog-view"
+                to="/blog"
             >
                 <b-icon pack="fas" icon="arrow-left" style="margin-right: 3px"></b-icon>
                 Back
@@ -99,7 +99,7 @@ export default {
                 .then(response => {
                     this.$buefy.toast.open(response.data.message);
                     if (response.data.message === 'Your new blog post was created.') {
-                        this.$router.push({ name: 'blog-view' });
+                        this.$router.push({ name: 'blog' });
                     }
                 })
                 .catch(error => {

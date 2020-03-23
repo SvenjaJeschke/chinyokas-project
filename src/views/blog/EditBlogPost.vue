@@ -122,7 +122,7 @@ export default {
                 .then(response => {
                     this.$buefy.toast.open(response.data.message);
                     if (response.data.message === 'Your blog was updated and saved.') {
-                        this.$router.push({ name: 'blog-view' });
+                        this.$router.push({ name: 'blog' });
                     }
                 })
                 .catch(error => {
@@ -150,7 +150,7 @@ export default {
                         this.isLoading = false;
                     })
             } else {
-                this.$router.push({ name: 'blog-view' });
+                this.$router.push({ name: 'blog' });
             }
         }
     }

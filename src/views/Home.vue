@@ -17,11 +17,6 @@ export default {
 </script>
 
 <style scoped>
-    h1 {
-        border-bottom: white;
-        border-bottom-style: solid;
-        border-bottom-width: 1px;
-    }
     p {
         padding: 20px;
     }

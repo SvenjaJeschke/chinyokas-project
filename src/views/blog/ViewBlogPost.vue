@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 class="blogheading">View Blog Post</h1>
+        <h1>View Blog Post</h1>
         <h5 v-if="post.category">in <b>{{ post.category.name }}</b></h5>
         <br>
         <div class="card">
@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div style="display: inline-block; flex-grow: 1"></div>
-            <div v-show="showCommentField"  class="card" style="width: 39%">
+            <div v-show="showCommentField"  class="card" style="width: 39%; height: 300px">
                 <div class="card-content">
                     <div style="display: flex">
                         <span>What's your name?</span>
@@ -108,6 +108,9 @@ export default {
         this.checkAdmin();
         this.getPost();
         this.getComments();
+        if (localStorage.getItem('username')) {
+            this.newComment.username = localStorage.getItem('username');
+        }
     },
     methods: {
         getPost() {
@@ -128,7 +131,7 @@ export default {
                         })
                     });
             } else {
-                this.$router.push({ name: 'blog-view' });
+                this.$router.push({ name: 'blog' });
             }
         },
         checkAdmin() {
@@ -143,6 +146,7 @@ export default {
                 })
         },
         sendComment() {
+            localStorage.setItem('username', this.newComment.username);
             this.axios
                 .post(
                     'http://localhost:8080/backend/api/blog-comment/create.php',
@@ -151,6 +155,7 @@ export default {
                 )
                 .then(response => {
                     this.$buefy.toast.open(response.data.message);
+                    this.getComments();
                 })
         },
         getComments() {
@@ -175,11 +180,6 @@ export default {
 </script>
 
 <style scoped>
-    .blogheading {
-        border-bottom: white;
-        border-bottom-style: solid;
-        border-bottom-width: 1px;
-    }
     h5 {
         font-size: 10pt;
     }
