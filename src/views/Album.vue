@@ -35,9 +35,32 @@
                         <span style="padding: 10px">
                             {{ $date(imagePost.created_at).format('DD/MM/YYYY HH:mm') }}
                         </span>
+                        <b-button 
+                            v-if="admin"
+                            outlined 
+                            type="is-white"
+                            tag="router-link"
+                            :to="'/edit-image-post/' + parseInt(imagePost.id)"
+                        >
+                            <b-icon 
+                                pack="fas" 
+                                icon="pen"
+                            ></b-icon>
+                        </b-button>
+                        <b-button 
+                            v-if="admin" 
+                            type="is-danger"
+                            style="margin-left: 5px"
+                            @click="confirmDelete(imagePost.id)"
+                        >
+                            <b-icon 
+                                pack="fas" 
+                                icon="trash"
+                            ></b-icon>
+                        </b-button>
                     </div>
                     <div class="content">
-                        {{ imagePost.description.substring(0, 200) }}
+                        {{ imagePost.description }}
                     </div>
                 </div>
             </div>
@@ -90,6 +113,28 @@ export default {
                     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
                 .then(response => {
                     this.admin = response.data.admin;
+                })
+        },
+        confirmDelete(id) {
+            this.$buefy.dialog.confirm({
+                title: 'Delete image post',
+                message: 'Are you sure you want to <b>delete</b> this image post?',
+                confirmText: 'Delete post',
+                type: 'is-danger',
+                hasIcon: true,
+                onConfirm: this.deleteImagePost(id)
+            })
+        },
+        deleteImagePost(id) {
+            this.axios
+                .post(
+                    'http://localhost:8080/backend/api/image-posts/delete.php',
+                    { id: id },
+                    { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
+                )
+                .then(response => {
+                    this.$buefy.toast.open(response.data.message);
+                    this.getImagePosts();
                 })
         }
     }

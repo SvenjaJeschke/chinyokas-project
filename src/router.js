@@ -11,6 +11,7 @@ import EditBlogPost from './views/blog/EditBlogPost';
 import Theme from './views/Theme';
 import Album from './views/Album';
 import CreateImagePost from './views/album/CreateImagePost';
+import EditImagePost from './views/album/EditImagePost';
 
 Vue.use(VueRouter);
 
@@ -67,12 +68,18 @@ const router = new VueRouter({
             path: '/create-image-post',
             name: 'create-image-post',
             component: CreateImagePost
+        },
+        {
+            path: '/edit-image-post/:id',
+            name: 'edit-image-post',
+            component: EditImagePost,
+            props: true
         }
     ]
 })
 
 router.beforeEach((to, from, next) => {
-    const adminRoutes = ['blog-create', 'edit-blog-post', 'theme'];
+    const adminRoutes = ['blog-create', 'edit-blog-post', 'theme', 'edit-image-post', 'notes'];
     if (adminRoutes.includes(to.name)) {
         const password = localStorage.getItem('password');
         axios

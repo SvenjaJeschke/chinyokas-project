@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Create a new Image Post</h1>
+        <h1>Edit Image Post</h1>
         <b-field label="Title">
             <b-input 
                 v-model="post.title"
@@ -19,10 +19,7 @@
             />
         </b-field>
         <div class="content has-text-centered">
-            <b-field v-if="!post.image">
-                <input type="file" ref="file" @change="onChange">
-            </b-field>
-            <img v-else :src="url" alt="Image Preview" style="width: 30%">
+            <img :src="post.image" alt="Image" style="width: 30%">
         </div>
         <div style="display: flex;">
             <b-button 
@@ -35,9 +32,9 @@
                 Back
             </b-button>
             <div style="display: inline-block; flex-grow: 1"></div>
-            <b-button type="is-success" style="color: black" @click="create()" :loading="isLoading" :disabled="isLoading">
+            <b-button type="is-success" style="color: black" @click="update()" :loading="isLoading" :disabled="isLoading">
                 <b-icon pack="fas" icon="check" style="margin-right: 3px"></b-icon>
-                Create
+                Save
             </b-button>
         </div>
     </div>
@@ -45,34 +42,32 @@
 
 <script>
 export default {
-    data() {
-        return {
-            post: {
-                title: null,
-                description: null,
-                image: null
-            },
-            isLoading: false,
-            url: null
+    props: {
+        id: {
+            type: [String, Number],
+            required: true
         }
     },
+    data() {
+        return {
+            post: null,
+            isLoading: false
+        }
+    },
+    created() {
+        this.getImagePost();
+    },
     methods: {
-        create() {
+        update() {
             this.isLoading = true;
-            let formData = new FormData();
-            formData.append('title', this.post.title);
-            formData.append('description', this.post.description);
-            formData.append('file', this.post.image);
             this.axios
-                .post('http://localhost:8080/backend/api/image-posts/create.php', 
-                    formData,
+                .post('http://localhost:8080/backend/api/image-posts/update.php', 
+                    { post: this.post },
                     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
                 )
                 .then(response => {
                     this.$buefy.toast.open(response.data.message);
-                    if (response.data.message === 'Your new image post was created.') {
-                        this.$router.push({ name: 'album' });
-                    }
+                    this.$router.push({ name: 'album' });
                 })
                 .catch(error => {
                     console.log(error);
@@ -81,10 +76,27 @@ export default {
                     this.isLoading = false;
                 });
         },
-        onChange() {
-            let image = this.$refs.file.files[0];
-            this.post.image = image;
-            this.url = URL.createObjectURL(image);
+        getImagePost() {
+            this.isLoading = true;
+            this.axios
+                .get(
+                    'http://localhost:8080/backend/api/image-posts/get.php',
+                    { params: { id: this.id } },
+                    { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
+                )
+                .then(response => {
+                    this.post = response.data;
+                }) 
+                .catch(error => {
+                    console.log(error);
+                    this.$buefy.toast.open({
+                        message: 'Something went wrong while loading the data... Please reload the page.',
+                        type: 'is-danger'
+                    })
+                })
+                .finally(() => {
+                    this.isLoading = false;
+                })
         }
     }
 }

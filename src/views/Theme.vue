@@ -3,8 +3,8 @@
         <h1>Theme</h1>
         <h2>Create a new theme</h2>
         <b-field label="Background Image URL">
-                <b-input v-model="newTheme.backgroundImage"></b-input>
-            </b-field>
+            <b-input v-model="newTheme.backgroundImage"></b-input>
+        </b-field>
         <div style="display: flex">
             <b-field label="Navigation Bar Type" style="width: 49%">
                 <b-select v-model="newTheme.navbarType" expanded>
