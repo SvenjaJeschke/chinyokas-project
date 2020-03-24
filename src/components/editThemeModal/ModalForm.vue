@@ -17,7 +17,7 @@
                             :key="index"
                             :value="type"
                         >
-                            {{ type }}
+                            {{ type.substring(3, type.length) }}
                         </option>
                     </b-select>
                 </b-field>
@@ -71,7 +71,13 @@ export default {
     props: {
         themeData: {
             type: Object,
-            default: () => {}
+            default: () => {
+                return {
+                    backgroundImage: null,
+                    borderColor: '#FFFFFF',
+                    navbarType: null
+                }
+            }
         }
     },
     data() {
@@ -92,7 +98,7 @@ export default {
             colorPanelIsOpen: false
         }
     },
-    mounted() {
+    created() {
         this.theme = this.themeData;
     },
     methods: {

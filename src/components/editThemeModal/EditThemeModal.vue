@@ -23,7 +23,13 @@ export default {
         },
         theme: {
             type: Object,
-            default: () => {}
+            default: () => {
+                return {
+                    backgroundImage: null,
+                    borderColor: '#FFFFFF',
+                    navbarType: null
+                }
+            }
         }
     },
     watch: {

@@ -13,7 +13,7 @@
                         :key="index"
                         :value="type"
                     >
-                        {{ type }}
+                        {{ type.substring(3, type.length) }}
                     </option>
                 </b-select>
             </b-field>
@@ -119,7 +119,7 @@ export default {
             themes: [],
             newTheme: {
                 backgroundImage: null,
-                borderColor: null,
+                borderColor: '#FFFFFF',
                 navbarType: null
             },
             navbarTypes: [
@@ -194,8 +194,8 @@ export default {
             }
         },
         editThemeData(theme) {
-            this.showEditThemeModal = true;
             this.editTheme = theme;
+            this.showEditThemeModal = true;
         }
     }
 }
