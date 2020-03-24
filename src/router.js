@@ -10,6 +10,7 @@ import ViewBlogPost from './views/blog/ViewBlogPost';
 import EditBlogPost from './views/blog/EditBlogPost';
 import Theme from './views/Theme';
 import Album from './views/Album';
+import CreateImagePost from './views/album/CreateImagePost';
 
 Vue.use(VueRouter);
 
@@ -61,6 +62,11 @@ const router = new VueRouter({
             path: '/album',
             name: 'album',
             component: Album
+        },
+        {
+            path: '/create-image-post',
+            name: 'create-image-post',
+            component: CreateImagePost
         }
     ]
 })

@@ -53,7 +53,8 @@ export default {
         'padding': '10px',
         'border-bottom-left-radius': '5px',
         'border-bottom-right-radius': '5px',
-        'min-height': '900px'
+        'min-height': '900px',
+        'margin-bottom': '10px'
       }
     },
     navItems() {
