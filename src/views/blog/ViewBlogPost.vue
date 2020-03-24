@@ -180,7 +180,5 @@ export default {
 </script>
 
 <style scoped>
-    h5 {
-        font-size: 10pt;
-    }
+    
 </style>

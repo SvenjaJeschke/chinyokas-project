@@ -11,21 +11,47 @@
                     ></b-input>
                 </b-field>
                 <b-field label="Navigation Bar Type">
-                <b-select v-model="theme.navbarType" expanded>
-                    <option
-                        v-for="(type, index) in navbarTypes"
-                        :key="index"
-                        :value="type"
-                    >
-                        {{ type }}
-                    </option>
-                </b-select>
-            </b-field>
-                <b-field label="Border Color">
-                    <b-input
-                        v-model="theme.borderColor"
-                    ></b-input>
+                    <b-select v-model="theme.navbarType" expanded>
+                        <option
+                            v-for="(type, index) in navbarTypes"
+                            :key="index"
+                            :value="type"
+                        >
+                            {{ type }}
+                        </option>
+                    </b-select>
                 </b-field>
+                
+                <div 
+                    style="display: inline-block; width: 100%"
+                >
+                    <b style="color: black">Border Color</b>
+                    <b-collapse
+                        aria-id="contentIdForA11y2"
+                        class="panel"
+                        animation="slide"
+                        :open.sync="colorPanelIsOpen"
+                        style="width: 100%"
+                    >
+                        <div
+                            slot="trigger"
+                            role="button"
+                            aria-controls="contentIdForA11y2"
+                            style="display: inline-block; width: 100%"
+                        >
+                            <b-field style="width: 100%">
+                                <b-input 
+                                    v-model="theme.borderColor" 
+                                ></b-input>
+                            </b-field>
+                        </div>
+                        <div 
+                            class="panel-block"
+                        >
+                            <color-picker v-model="theme.borderColor"></color-picker>
+                        </div>
+                    </b-collapse>
+                </div>
             </section>
             <footer class="modal-card-foot">
                 <button class="button" type="button" @click="$parent.close()">Close</button>
@@ -36,7 +62,12 @@
 </template>
 
 <script>
+import ColorPicker from '../colorPickerModal/ColorPicker';
+
 export default {
+    components: {
+        'color-picker': ColorPicker
+    },
     props: {
         themeData: {
             type: Object,
@@ -57,7 +88,8 @@ export default {
                 'is-success', 
                 'is-warning', 
                 'is-danger'
-            ]
+            ],
+            colorPanelIsOpen: false
         }
     },
     mounted() {

@@ -18,9 +18,36 @@
                 </b-select>
             </b-field>
             <div style="display: inline-block; flex-grow: 1"></div>
-            <b-field label="Border Color" style="width: 49%">
-                <b-input v-model="newTheme.borderColor"></b-input>
-            </b-field>
+            <div 
+                style="display: inline-block; width: 49%"
+            >
+                <p class="label">Border Color</p>
+                <b-collapse
+                    aria-id="contentIdForA11y2"
+                    class="panel"
+                    animation="slide"
+                    :open.sync="colorPanelIsOpen"
+                    style="width: 100%"
+                >
+                    <div
+                        slot="trigger"
+                        role="button"
+                        aria-controls="contentIdForA11y2"
+                        style="display: inline-block; width: 100%"
+                    >
+                        <b-field style="width: 100%">
+                            <b-input 
+                                v-model="newTheme.borderColor" 
+                            ></b-input>
+                        </b-field>
+                    </div>
+                    <div 
+                        class="panel-block"
+                    >
+                        <color-picker v-model="newTheme.borderColor"></color-picker>
+                    </div>
+                </b-collapse>
+            </div>
         </div>
         <b-button 
             type="is-success" 
@@ -80,10 +107,12 @@
 <script>
 import {EventBus} from './../event-bus.js';
 import EditThemeModal from '../components/editThemeModal/EditThemeModal';
+import ColorPicker from '../components/colorPickerModal/ColorPicker';
 
 export default {
     components: {
-        'edit-theme-modal': EditThemeModal
+        'edit-theme-modal': EditThemeModal,
+        'color-picker': ColorPicker
     },
     data() {
         return {
@@ -107,7 +136,8 @@ export default {
             isLoading: false,
             showEditThemeModal: false,
             editTheme: null,
-            themesAreLoading: false
+            themesAreLoading: false,
+            colorPanelIsOpen: false
         }
     },
     created() {

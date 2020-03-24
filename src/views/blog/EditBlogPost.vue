@@ -145,6 +145,10 @@ export default {
                     })
                     .catch(error => {
                         console.log(error);
+                        this.$buefy.toast.open({
+                            message: 'Something went wrong while loading the data... Please reload the page.',
+                            type: 'is-danger'
+                        })
                     })
                     .finally(() => {
                         this.isLoading = false;

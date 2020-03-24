@@ -9,6 +9,7 @@ import CreateBlogPost from './views/blog/CreateBlogPost';
 import ViewBlogPost from './views/blog/ViewBlogPost';
 import EditBlogPost from './views/blog/EditBlogPost';
 import Theme from './views/Theme';
+import Album from './views/Album';
 
 Vue.use(VueRouter);
 
@@ -55,6 +56,11 @@ const router = new VueRouter({
             path: '/theme',
             name: 'theme',
             component: Theme
+        },
+        {
+            path: '/album',
+            name: 'album',
+            component: Album
         }
     ]
 })
