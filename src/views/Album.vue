@@ -118,11 +118,11 @@ export default {
         confirmDelete(id) {
             this.$buefy.dialog.confirm({
                 title: 'Delete image post',
-                message: 'Are you sure you want to <b>delete</b> this image post?',
+                message: '<p style="color: black">Are you sure you want to <b>delete</b> this image post?</p>',
                 confirmText: 'Delete post',
                 type: 'is-danger',
                 hasIcon: true,
-                onConfirm: this.deleteImagePost(id)
+                onConfirm: () => this.deleteImagePost(id)
             })
         },
         deleteImagePost(id) {

@@ -1,6 +1,10 @@
 <template>
     <div>
         <h1>Music</h1>
+        <p>
+            These are my favorite playlists on spotify. More content to this page will be added soon! 
+            For example a selfmade playlist with the HTML5 audio tag and js.
+        </p>
         <div v-if="!loading">
             <div v-for="(url, index) in urls" :key="index" style="display: inline-block; width: 25%">
                 <spotify-player

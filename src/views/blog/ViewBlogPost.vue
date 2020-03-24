@@ -14,6 +14,7 @@
                 </span>
                 <b-tooltip label="Edit" position="is-bottom">
                     <b-button 
+                        v-if="admin"
                         type="is-white" 
                         outlined
                         style="color: black; margin: 5px" 
