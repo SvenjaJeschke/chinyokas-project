@@ -1,7 +1,6 @@
 <template>
     <div>
         <h1>My Art Gallery</h1>
-        <p>This is where I post all my drawings and doodles. Stay tuned!</p>
         <b-progress v-if="imagePostsAreLoading" type="is-success"></b-progress>
         <div v-if="admin" style="display: flex">
             <div style="flex-grow: 1; display: inline-block"></div>
@@ -15,6 +14,33 @@
                 Create new image post
             </b-button>
         </div>
+            <div 
+                class="card image-post" 
+                v-for="imagePost in imagePosts" 
+                :key="imagePost.id" 
+            >
+                <div class="card-image">
+                    <figure class="image is-4by3">
+                        <div>
+                            <img :src="imagePost.image" :alt="imagePost.title">
+                        </div>
+                    </figure>
+                </div>
+                <div class="card-content">
+                    <div class="card-header" style="display: flex">
+                        <p class="card-header-title" style="color: #e3e3e3">
+                            {{imagePost.title}}
+                        </p>
+                        <div style="flex-grow: 1; display: inline-block"></div>
+                        <span style="padding: 10px">
+                            {{ $date(imagePost.created_at).format('DD/MM/YYYY HH:mm') }}
+                        </span>
+                    </div>
+                    <div class="content">
+                        {{ imagePost.description.substring(0, 200) }}
+                    </div>
+                </div>
+            </div>
     </div>
 </template>
 
@@ -69,3 +95,19 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+    img {
+        max-width:100%;
+        max-height:100%;
+        object-fit: contain;
+    }
+    .image-post {
+        width: 49%;
+        display: inline-block; 
+        margin: 5px;
+        padding: 10px; 
+        background-color: #212121; 
+        color: #e3e3e3;
+    }
+</style>

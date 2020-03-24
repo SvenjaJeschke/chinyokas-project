@@ -22,7 +22,7 @@
             <b-field v-if="!post.image">
                 <input type="file" ref="file" @change="onChange">
             </b-field>
-            <img v-else :src="url" alt="Image Preview" style="width: 50%">
+            <img v-else :src="url" alt="Image Preview" style="width: 30%">
         </div>
         <div style="display: flex;">
             <b-button 
