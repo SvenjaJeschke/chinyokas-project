@@ -5,11 +5,11 @@
             This is my own personal website that I use for posting blogs as well as trying out new 
             stuff and playing around with my knowledge in programming and web developing. 
             Feel free to visit the Music page, my Album where I post my drawings, read my blogs or 
-            leave a comment. More content coming soon! 
+            leave a comment. More content coming soon!
         </p>
         <div style="display: flex">
             <div style="width: 49%; display: inline-block">
-                <div style="height: 375px" class="content has-text-centered">
+                <div style="height: 350px" class="content has-text-centered">
                     <img src="http://localhost:8080/public/fantasy.png" alt="Dragon">
                 </div>
                 <div>
