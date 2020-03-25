@@ -13,7 +13,7 @@
                     <img src="../../public/fantasy.png" alt="Dragon">
                 </div>
                 <div>
-                    <section class="website-content-section">
+                    <section v-if="latestBlogPost" class="website-content-section">
                         <h3>Latest Blog Post</h3>
                         <h5>in <b>{{ latestBlogPost.category.name }}</b></h5>
                         <br>
@@ -44,7 +44,7 @@
                                 ></b-icon>
                             </b-button>
                         </h3>
-                        <p>
+                        <p v-if="song">
                             {{ song.name }}<br><br>
                             <audio :src="song.url" controls></audio>
                         </p>
@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div style="flex-grow: 1; display: inline-block"></div>
-            <div class="website-content-section image-post">
+            <div v-if="latestImagePost" class="website-content-section image-post">
                 <h3>My newest drawing</h3><br>
                 <div class="card-image">
                     <figure class="image is-4by3">
@@ -104,8 +104,8 @@ export default {
     },
     data() {
         return {
-            latestBlogPost: {},
-            latestImagePost: {},
+            latestBlogPost: null,
+            latestImagePost: null,
             admin: false,
             song: null,
             showEditSongModal: false

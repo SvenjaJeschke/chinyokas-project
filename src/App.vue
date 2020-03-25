@@ -10,7 +10,7 @@
     <b-navbar :type="theme.navbarType">
         <template slot="brand">
             <b-navbar-item tag="router-link" to="/">
-                <img :src="icon" alt="Website Icon" style="margin-right: 10px">
+                <img src="../public/dragon-black.png" alt="Website Icon" style="margin-right: 10px">
                 Chinyokas Project
             </b-navbar-item>
         </template>
@@ -72,13 +72,13 @@ export default {
             }
             return navItems;
         },
-        icon() {
+        /*icon() {
             if (['is-dark', 'is-black'].includes(this.theme.navbarType)) {
-                return '/public/dragon-purple.png';
+                return '../public/dragon-purple.png';
             } else {
-                return '/public/dragon-black.png';
+                return '../public/dragon-black.png';
             }
-        }
+        }*/
     },
     watch: {
         admin() {
