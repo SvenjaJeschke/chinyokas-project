@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "start": "node server.js"
   },
   "dependencies": {
     "@caohenghu/vue-colorpicker": "^1.2.4",
@@ -13,6 +14,7 @@
     "buefy": "^0.8.13",
     "core-js": "^3.6.4",
     "dayjs": "^1.8.23",
+    "express": "^4.17.1",
     "node-sass": "^4.13.1",
     "sass-loader": "^8.0.2",
     "vue": "^2.6.11",
