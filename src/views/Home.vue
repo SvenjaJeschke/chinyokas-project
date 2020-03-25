@@ -13,7 +13,7 @@
                     <img src="../../public/fantasy.png" alt="Dragon">
                 </div>
                 <div>
-                    <section v-if="latestBlogPost && latestBlogPost.name" class="website-content-section">
+                    <section v-if="latestBlogPost && latestBlogPost.title" class="website-content-section">
                         <h3>Latest Blog Post</h3>
                         <h5>in <b>{{ latestBlogPost.category.name }}</b></h5>
                         <br>

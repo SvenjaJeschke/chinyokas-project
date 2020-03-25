@@ -6,8 +6,8 @@ class BlogPostController {
     public static function create($postData) {
         if ($postData['title']) {
             $pdo = Database::connect();
-            $body = addslashes($postData['body']);
-            $title = addslashes($postData['title']);
+            $body = pg_escape_string($postData['body']);
+            $title = pg_escape_string($postData['title']);
             $is_public = $postData['is_public'] ? 'true' : 'false';
             $createBlogPost = $pdo->prepare(
                 "insert into blog_posts 
@@ -26,9 +26,9 @@ class BlogPostController {
     public static function update($postData) {
         if ($postData['title']) {
             $pdo = Database::connect();
-            $is_public = $postData['is_public'] ? 1 : 0;
-            $body = addslashes($postData['body']);
-            $title = addslashes($postData['title']);
+            $is_public = $postData['is_public'] ? 'true' : 'false';
+            $body = pg_escape_string($postData['body']);
+            $title = pg_escape_string($postData['title']);
             $updateBlogPost = $pdo->prepare(
                 "update blog_posts set 
                 title = '{$title}',
