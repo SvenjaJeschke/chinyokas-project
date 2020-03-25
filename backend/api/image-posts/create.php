@@ -23,7 +23,7 @@ $filename = uniqid() . '_' . basename($image['name']);
 $uploadfile = $uploaddir . $filename;
 move_uploaded_file($image['tmp_name'], $uploadfile);
 
-$imagePath = "http://localhost:8080/images/{$filename}";
+$imagePath = "../../images/{$filename}";
 
 $pdo = Database::connect();
 $createPost = $pdo->prepare("

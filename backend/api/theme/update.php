@@ -14,9 +14,9 @@ $pdo = Database::connect();
 $updateTheme = $pdo->prepare("
     update themes
     set
-    backgroundImage = '{$theme['backgroundImage']}',
-    borderColor = '{$theme['borderColor']}',
-    navbarType = '{$theme['navbarType']}'
+    backgroundimage = '{$theme['backgroundimage']}',
+    bordercolor = '{$theme['bordercolor']}',
+    navbartype = '{$theme['navbartype']}'
     where
     id = {$theme['id']}
 ");

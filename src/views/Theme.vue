@@ -3,11 +3,11 @@
         <h1>Theme</h1>
         <h2>Create a new theme</h2>
         <b-field label="Background Image URL">
-            <b-input v-model="newTheme.backgroundImage"></b-input>
+            <b-input v-model="newTheme.backgroundimage"></b-input>
         </b-field>
         <div style="display: flex">
             <b-field label="Navigation Bar Type" style="width: 49%">
-                <b-select v-model="newTheme.navbarType" expanded>
+                <b-select v-model="newTheme.navbartype" expanded>
                     <option
                         v-for="(type, index) in navbarTypes"
                         :key="index"
@@ -37,14 +37,14 @@
                     >
                         <b-field style="width: 100%">
                             <b-input 
-                                v-model="newTheme.borderColor" 
+                                v-model="newTheme.bordercolor" 
                             ></b-input>
                         </b-field>
                     </div>
                     <div 
                         class="panel-block"
                     >
-                        <color-picker v-model="newTheme.borderColor"></color-picker>
+                        <color-picker v-model="newTheme.bordercolor"></color-picker>
                     </div>
                 </b-collapse>
             </div>
@@ -67,7 +67,7 @@
             :key="theme.id"
             style="width: 24%; padding: 0; display: inline-block; margin: 5px"
         >
-            <b-navbar class="card-header" :type="theme.navbarType">
+            <b-navbar class="card-header" :type="theme.navbartype">
                 <template slot="brand">
                     <b-tooltip label="Edit theme">
                         <b-button @click="editThemeData(theme)" style="margin: 10px" outlined type="is-white">
@@ -93,11 +93,11 @@
                 class="card-content" 
                 :style="{
                     padding: '5px', 
-                    backgroundColor: theme.borderColor, 
+                    backgroundColor: theme.bordercolor, 
                     borderRadius: '4px'
                 }"
             >
-                <img :src="theme.backgroundImage" alt="Theme-image">
+                <img :src="theme.backgroundimage" alt="Theme-image">
             </div>
         </div>
         <edit-theme-modal v-model="showEditThemeModal" :theme="editTheme"></edit-theme-modal>         
@@ -118,9 +118,9 @@ export default {
         return {
             themes: [],
             newTheme: {
-                backgroundImage: null,
-                borderColor: '#FFFFFF',
-                navbarType: null
+                backgroundimage: null,
+                bordercolor: '#FFFFFF',
+                navbartype: null
             },
             navbarTypes: [
                 'is-white', 

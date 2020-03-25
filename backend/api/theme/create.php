@@ -13,12 +13,12 @@ $theme = $json['theme'];
 $pdo = Database::connect();
 $createTheme = $pdo->prepare("
     insert into themes
-    (backgroundImage, borderColor, navbarType, is_current)
+    (backgroundimage, bordercolor, navbartype, is_current)
     values (
-        '{$theme['backgroundImage']}',
-        '{$theme['borderColor']}',
-        '{$theme['navbarType']}',
-        0
+        '{$theme['backgroundimage']}',
+        '{$theme['bordercolor']}',
+        '{$theme['navbartype']}',
+        false
     )"
 );
 $createTheme->execute();

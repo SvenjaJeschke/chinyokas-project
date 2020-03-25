@@ -38,7 +38,7 @@ class Post {
         $this->id = (int) $post->id;
         $this->title = $post->title;
         $this->body = $post->body;
-        $this->is_public = $post->is_public === '1';
+        $this->is_public = $post->is_public;
         $this->category_id = (int) $post->category_id;
         if ($post->likes) {
             $this->likes = (int) $post->likes;

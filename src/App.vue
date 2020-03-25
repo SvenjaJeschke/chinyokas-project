@@ -3,11 +3,11 @@
     id="app"
     :style="{
       'background-attachment': 'fixed',
-      'background-image': 'url(' + theme.backgroundImage + ')',
+      'background-image': 'url(' + theme.backgroundimage + ')',
       'background-size': 'cover'
     }"
   >
-    <b-navbar :type="theme.navbarType">
+    <b-navbar :type="theme.navbartype">
         <template slot="brand">
             <b-navbar-item tag="router-link" to="/">
                 <img src="../public/dragon-black.png" alt="Website Icon" style="margin-right: 10px">
@@ -46,7 +46,7 @@ export default {
         pageContent() {
             return {
                 'width': '75%',
-                'border-color': this.theme.borderColor,
+                'border-color': this.theme.bordercolor,
                 'border-style': 'solid',
                 'border-width': '2px',
                 'border-top-width': '0px',

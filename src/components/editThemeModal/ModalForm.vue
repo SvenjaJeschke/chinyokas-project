@@ -5,13 +5,15 @@
                 <p class="modal-card-title">Edit Theme</p>
             </header>
             <section class="modal-card-body">
-                <b-field label="Background Image URL">
+                <b style="color: black">Background Image URL</b>
+                <b-field>
                     <b-input
-                        v-model="theme.backgroundImage"
+                        v-model="theme.backgroundimage"
                     ></b-input>
                 </b-field>
-                <b-field label="Navigation Bar Type">
-                    <b-select v-model="theme.navbarType" expanded>
+                <b style="color: black">Navigation Bar Type</b>
+                <b-field>
+                    <b-select v-model="theme.navbartype" expanded>
                         <option
                             v-for="(type, index) in navbarTypes"
                             :key="index"
@@ -41,14 +43,14 @@
                         >
                             <b-field style="width: 100%">
                                 <b-input 
-                                    v-model="theme.borderColor" 
+                                    v-model="theme.bordercolor" 
                                 ></b-input>
                             </b-field>
                         </div>
                         <div 
                             class="panel-block"
                         >
-                            <color-picker v-model="theme.borderColor"></color-picker>
+                            <color-picker v-model="theme.bordercolor"></color-picker>
                         </div>
                     </b-collapse>
                 </div>
@@ -73,9 +75,9 @@ export default {
             type: Object,
             default: () => {
                 return {
-                    backgroundImage: null,
-                    borderColor: '#FFFFFF',
-                    navbarType: null
+                    backgroundimage: null,
+                    bordercolor: '#FFFFFF',
+                    navbartype: null
                 }
             }
         }
