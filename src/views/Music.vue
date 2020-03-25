@@ -90,7 +90,7 @@ export default {
             this.loading = true;
             if (this.newUrl) {
                 this.axios
-                    .post('http://localhost:8080/backend/api/playlist/create.php', 
+                    .post('/backend/api/playlist/create.php', 
                         { params: { name: this.newName, url: this.newUrl } }, 
                         { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
                     .then(() => {
@@ -106,7 +106,7 @@ export default {
         },
         getPlaylists() {
             this.loading = true;
-            this.axios.get('http://localhost:8080/backend/api/playlist/urls.php').then(response => {
+            this.axios.get('/backend/api/playlist/urls.php').then(response => {
                 this.urls = response.data;
             }).catch(error => {
                 console.log(error);
@@ -124,7 +124,7 @@ export default {
             const password = localStorage.getItem('password');
             this.axios
                 .get(
-                    'http://localhost:8080/backend/api/auth/checkadmin.php',
+                    '/backend/api/auth/checkadmin.php',
                     { params: { password: password } },
                     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
                 .then(response => {

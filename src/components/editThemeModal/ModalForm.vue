@@ -105,7 +105,7 @@ export default {
         update() {
             this.isLoading = true;
             this.axios
-                .post('http://localhost:8080/backend/api/theme/update.php', 
+                .post('/backend/api/theme/update.php', 
                     { theme: this.theme },
                     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
                 )

@@ -117,7 +117,7 @@ export default {
         getPost() {
             if (this.id) {
                 this.axios
-                    .get('http://localhost:8080/backend/api/blog-post/get.php', 
+                    .get('/backend/api/blog-post/get.php', 
                         { params: { id: parseInt(this.id) } },
                         { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
                     )
@@ -139,7 +139,7 @@ export default {
             const password = localStorage.getItem('password');
             this.axios
                 .get(
-                    'http://localhost:8080/backend/api/auth/checkadmin.php',
+                    '/backend/api/auth/checkadmin.php',
                     { params: { password: password } },
                     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
                 .then(response => {
@@ -150,7 +150,7 @@ export default {
             localStorage.setItem('username', this.newComment.username);
             this.axios
                 .post(
-                    'http://localhost:8080/backend/api/blog-comment/create.php',
+                    '/backend/api/blog-comment/create.php',
                     { comment: this.newComment },
                     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
                 )
@@ -162,7 +162,7 @@ export default {
         getComments() {
             this.axios
                 .get(
-                    'http://localhost:8080/backend/api/blog-comment/blog-comments.php',
+                    '/backend/api/blog-comment/blog-comments.php',
                     { params: { blog: this.id } }
                 )
                 .then(response => {

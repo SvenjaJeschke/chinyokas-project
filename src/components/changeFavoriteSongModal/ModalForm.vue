@@ -56,7 +56,7 @@ export default {
         update() {
             this.isLoading = true;
             this.axios
-                .post('http://localhost:8080/backend/api/favorite-song/update.php', 
+                .post('/backend/api/favorite-song/update.php', 
                     { song: this.song },
                     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
                 )

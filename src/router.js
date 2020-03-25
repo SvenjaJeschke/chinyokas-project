@@ -78,7 +78,7 @@ router.beforeEach((to, from, next) => {
         const password = localStorage.getItem('password');
         axios
             .get(
-                'http://localhost:8080/backend/api/auth/checkadmin.php',
+                '/backend/api/auth/checkadmin.php',
                 { params: { password: password } },
                 { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
             .then(response => {

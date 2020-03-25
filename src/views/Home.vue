@@ -5,12 +5,12 @@
             This is my own personal website that I use for posting blogs as well as trying out new 
             stuff and playing around with my knowledge in programming and web developing. 
             Feel free to visit the Music page, my Album where I post my drawings, read my blogs or 
-            leave a comment. More content coming soon!
+            leave a comment. More content coming soon! 
         </p>
         <div style="display: flex">
             <div style="width: 49%; display: inline-block">
                 <div style="height: 350px" class="content has-text-centered">
-                    <img src="http://localhost:8080/public/fantasy.png" alt="Dragon">
+                    <img src="../../public/fantasy.png" alt="Dragon">
                 </div>
                 <div>
                     <section class="website-content-section">
@@ -139,7 +139,7 @@ export default {
     methods: {
         getLatestBlogPost() {
             this.axios
-                .get('http://localhost:8080/backend/api/blog-post/latest.php')
+                .get('/backend/api/blog-post/latest.php')
                 .then(response => {
                     this.latestBlogPost = response.data;
                 })
@@ -153,7 +153,7 @@ export default {
         },
         getLatestImagePost() {
             this.axios
-                .get('http://localhost:8080/backend/api/image-posts/latest.php')
+                .get('/backend/api/image-posts/latest.php')
                 .then(response => {
                     this.latestImagePost = response.data;
                 })
@@ -169,7 +169,7 @@ export default {
             const password = localStorage.getItem('password');
             this.axios
                 .get(
-                    'http://localhost:8080/backend/api/auth/checkadmin.php',
+                    '/backend/api/auth/checkadmin.php',
                     { params: { password: password } },
                     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
                 .then(response => {
@@ -178,7 +178,7 @@ export default {
         },
         getFavoriteSong() {
             this.axios
-                .get('http://localhost:8080/backend/api/favorite-song/get.php')
+                .get('/backend/api/favorite-song/get.php')
                 .then(response => {
                     this.song = response.data;
                 })

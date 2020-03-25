@@ -64,7 +64,7 @@ export default {
             formData.append('description', this.post.description);
             formData.append('file', this.post.image);
             this.axios
-                .post('http://localhost:8080/backend/api/image-posts/create.php', 
+                .post('/backend/api/image-posts/create.php', 
                     formData,
                     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
                 )

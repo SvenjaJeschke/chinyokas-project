@@ -74,9 +74,9 @@ export default {
         },
         icon() {
             if (['is-dark', 'is-black'].includes(this.theme.navbarType)) {
-                return 'http://localhost:8080/public/dragon-purple.png';
+                return '/public/dragon-purple.png';
             } else {
-                return 'http://localhost:8080/public/dragon-black.png';
+                return '/public/dragon-black.png';
             }
         }
     },
@@ -99,7 +99,7 @@ export default {
             const password = localStorage.getItem('password');
             this.axios
                 .get(
-                  'http://localhost:8080/backend/api/auth/checkadmin.php',
+                  '/backend/api/auth/checkadmin.php',
                   { params: { password: password } },
                   { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
                 .then(response => {
@@ -108,7 +108,7 @@ export default {
         },
         getTheme() {
             this.axios
-                .get('http://localhost:8080/backend/api/theme/current.php')
+                .get('/backend/api/theme/current.php')
                 .then(response => {
                     this.theme = response.data;
                 })

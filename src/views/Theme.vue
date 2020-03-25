@@ -147,7 +147,7 @@ export default {
         getThemes() {
             this.themesAreLoading = true;
             this.axios
-                .get('http://localhost:8080/backend/api/theme/all.php')
+                .get('/backend/api/theme/all.php')
                 .then(response => {
                     this.themes = response.data;
                 })
@@ -166,7 +166,7 @@ export default {
             this.isLoading = true;
             this.axios
                 .post(
-                    'http://localhost:8080/backend/api/theme/create.php',
+                    '/backend/api/theme/create.php',
                     { theme: this.newTheme },
                     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
                 )
@@ -182,7 +182,7 @@ export default {
             if (checked) {
                 this.axios
                     .post(
-                        'http://localhost:8080/backend/api/theme/change.php',
+                        '/backend/api/theme/change.php',
                         { id },
                         { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
                     )

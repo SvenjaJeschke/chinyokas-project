@@ -97,7 +97,7 @@ export default {
         getCategories() {
             this.isLoading = true;
             this.axios
-                .get('http://localhost:8080/backend/api/blog-category/all.php')
+                .get('/backend/api/blog-category/all.php')
                 .then(response => {
                     this.categories = response.data;
                 })
@@ -115,7 +115,7 @@ export default {
         update() {
             this.isLoading = true;
             this.axios
-                .post('http://localhost:8080/backend/api/blog-post/update.php', 
+                .post('/backend/api/blog-post/update.php', 
                     { post: this.post },
                     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
                 )
@@ -136,7 +136,7 @@ export default {
             this.isLoading = true;
             if (this.id) {
                 this.axios
-                    .get('http://localhost:8080/backend/api/blog-post/get.php', 
+                    .get('/backend/api/blog-post/get.php', 
                         { params: { id: parseInt(this.id) } },
                         { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
                     )

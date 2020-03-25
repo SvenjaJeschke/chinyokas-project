@@ -7,6 +7,8 @@ import axios from 'axios';
 import VueAxios from 'vue-axios';
 import VueDayjs from 'vue-dayjs-plugin';
 import TextareaAutosize from 'vue-textarea-autosize';
+
+axios.defaults.baseURL = 'http://localhost:8080';
  
 Vue.use(TextareaAutosize);
 Vue.use(VueAxios, axios);

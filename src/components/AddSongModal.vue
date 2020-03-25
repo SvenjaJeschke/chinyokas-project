@@ -47,7 +47,7 @@ export default {
         create() {
             this.isLoading = true;
             this.axios
-                .post('http://localhost:8080/backend/api/playlist-song/create.php', 
+                .post('/backend/api/playlist-song/create.php', 
                     { song: this.song },
                     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
                 )

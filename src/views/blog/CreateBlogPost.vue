@@ -74,7 +74,7 @@ export default {
         getCategories() {
             this.isLoading = true;
             this.axios
-                .get('http://localhost:8080/backend/api/blog-category/all.php')
+                .get('/backend/api/blog-category/all.php')
                 .then(response => {
                     this.categories = response.data;
                 })
@@ -92,7 +92,7 @@ export default {
         create() {
             this.isLoading = true;
             this.axios
-                .post('http://localhost:8080/backend/api/blog-post/create.php', 
+                .post('/backend/api/blog-post/create.php', 
                     { post: this.post },
                     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
                 )

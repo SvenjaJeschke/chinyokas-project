@@ -61,7 +61,7 @@ export default {
         update() {
             this.isLoading = true;
             this.axios
-                .post('http://localhost:8080/backend/api/image-posts/update.php', 
+                .post('/backend/api/image-posts/update.php', 
                     { post: this.post },
                     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
                 )
@@ -80,7 +80,7 @@ export default {
             this.isLoading = true;
             this.axios
                 .get(
-                    'http://localhost:8080/backend/api/image-posts/get.php',
+                    '/backend/api/image-posts/get.php',
                     { params: { id: this.id } },
                     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
                 )

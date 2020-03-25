@@ -36,7 +36,7 @@ export default {
         create() {
             this.isLoading = true;
             this.axios
-                .post('http://localhost:8080/backend/api/blog-category/create.php', 
+                .post('/backend/api/blog-category/create.php', 
                     { name: this.name },
                     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
                 )

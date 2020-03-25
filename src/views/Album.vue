@@ -89,7 +89,7 @@ export default {
         getImagePosts() {
             this.imagePostsAreLoading = true;
             this.axios
-                .get('http://localhost:8080/backend/api/image-posts/all.php')
+                .get('/backend/api/image-posts/all.php')
                 .then(response => {
                     this.imagePosts = response.data;
                 })
@@ -108,7 +108,7 @@ export default {
             const password = localStorage.getItem('password');
             this.axios
                 .get(
-                    'http://localhost:8080/backend/api/auth/checkadmin.php',
+                    '/backend/api/auth/checkadmin.php',
                     { params: { password: password } },
                     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
                 .then(response => {
@@ -128,7 +128,7 @@ export default {
         deleteImagePost(id) {
             this.axios
                 .post(
-                    'http://localhost:8080/backend/api/image-posts/delete.php',
+                    '/backend/api/image-posts/delete.php',
                     { id: id },
                     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
                 )

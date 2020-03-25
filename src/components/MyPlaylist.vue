@@ -50,7 +50,7 @@ export default {
     methods: {
         getSongs(firstLoading) {
             this.axios
-                .get('http://localhost:8080/backend/api/playlist-song/all.php')
+                .get('/backend/api/playlist-song/all.php')
                 .then(response => {
                     this.songs = response.data;
                     if (firstLoading) {
@@ -84,7 +84,7 @@ export default {
         },
         deleteSong(id) {
             this.axios
-                .post('http://localhost:8080/backend/api/playlist-song/delete.php', 
+                .post('/backend/api/playlist-song/delete.php', 
                     { id },
                     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
                 )
@@ -97,7 +97,7 @@ export default {
             const password = localStorage.getItem('password');
             this.axios
                 .get(
-                    'http://localhost:8080/backend/api/auth/checkadmin.php',
+                    '/backend/api/auth/checkadmin.php',
                     { params: { password: password } },
                     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
                 .then(response => {

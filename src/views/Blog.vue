@@ -146,7 +146,7 @@ export default {
         getCategories() {
             this.isLoading = true;
             this.axios
-                .get('http://localhost:8080/backend/api/blog-category/all-with-posts.php')
+                .get('/backend/api/blog-category/all-with-posts.php')
                 .then(response => {
                     this.collapses = response.data;
                 })
@@ -165,7 +165,7 @@ export default {
             const password = localStorage.getItem('password');
             this.axios
                 .get(
-                    'http://localhost:8080/backend/api/auth/checkadmin.php',
+                    '/backend/api/auth/checkadmin.php',
                     { params: { password: password } },
                     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
                 .then(response => {
@@ -193,7 +193,7 @@ export default {
             this.removeFromArray(this.openCollapseItems, id);
             this.axios
                 .post(
-                    'http://localhost:8080/backend/api/blog-post/delete.php',
+                    '/backend/api/blog-post/delete.php',
                     { id: id },
                     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
                 )
@@ -206,7 +206,7 @@ export default {
             this.removeFromArray(this.editCategoryName, category.id);
             this.axios
                 .post(
-                    'http://localhost:8080/backend/api/blog-category/update.php',
+                    '/backend/api/blog-category/update.php',
                     { category: category },
                     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
                 )
@@ -236,7 +236,7 @@ export default {
         deleteCategory(id) {
             this.axios
                 .post(
-                    'http://localhost:8080/backend/api/blog-category/delete.php',
+                    '/backend/api/blog-category/delete.php',
                     { id },
                     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
                 )
