@@ -65,8 +65,7 @@ export default {
                 { name: 'Album', route: '/album' }
             ];
             const adminItems = [
-                { name: 'Theme', route: '/theme' }, 
-                { name: 'Notes', route: '/notes' }
+                { name: 'Theme', route: '/theme' }
             ]
             if (this.admin) {
                 navItems = navItems.concat(adminItems);

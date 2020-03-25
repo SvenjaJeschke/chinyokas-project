@@ -1,7 +1,6 @@
 import axios from 'axios';
 import VueRouter from 'vue-router';
 import Home from './views/Home';
-import Notes from './views/Notes';
 import Vue from 'vue';
 import Music from './views/Music';
 import Blog from './views/Blog';
@@ -21,11 +20,6 @@ const router = new VueRouter({
             path: '/',
             name: 'home',
             component: Home
-        },
-        {
-            path: '/notes',
-            name: 'notes',
-            component: Notes
         },
         {
             path: '/music',
@@ -79,7 +73,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-    const adminRoutes = ['blog-create', 'edit-blog-post', 'theme', 'edit-image-post', 'notes'];
+    const adminRoutes = ['blog-create', 'edit-blog-post', 'theme', 'edit-image-post'];
     if (adminRoutes.includes(to.name)) {
         const password = localStorage.getItem('password');
         axios

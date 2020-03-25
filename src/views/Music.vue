@@ -1,10 +1,18 @@
 <template>
     <div>
         <h1>Music</h1>
-        <p>
-            These are my favorite playlists on spotify. More content to this page will be added soon! 
-            For example a selfmade playlist with the HTML5 audio tag and js.
-        </p>
+        <my-playlist></my-playlist>
+        <br>
+        <b-button
+            v-if="admin"
+            style="color: black"
+            type="is-success"
+            @click="showAddSongModal = true"
+        >
+            Add a song
+        </b-button>
+        <br><br>
+        <h2>My favorite playlists on Spotify</h2><br>
         <div v-if="!loading">
             <div v-for="(url, index) in urls" :key="index" style="display: inline-block; width: 25%">
                 <spotify-player
@@ -14,7 +22,7 @@
         </div>
         <b-button v-else loading type="is-dark" style="width: 300px"></b-button><br><br>
         <div v-if="admin">
-            <h2>Add new Playlist</h2>
+            <h2>Add new Spotify playlist</h2>
             <b-field label="Playlist Name:" style="width: 40%">
                 <b-input v-model="newName" style="width: 100%"></b-input>
             </b-field>
@@ -35,15 +43,28 @@
                 Create
             </b-button>
         </div>
+        <b-modal 
+            :active.sync="showAddSongModal"
+            has-modal-card
+            trap-focus
+            aria-role="dialog"
+            aria-modal
+        >
+            <add-song-modal></add-song-modal>
+        </b-modal>
     </div>
 </template>
 
 <script>
 import SpotifyPlayer from './../components/SpotifyPlayer';
+import MyPlaylist from '../components/MyPlaylist';
+import AddSongModal from '../components/AddSongModal';
 
 export default {
     components: {
-        'spotify-player': SpotifyPlayer
+        'spotify-player': SpotifyPlayer,
+        'my-playlist': MyPlaylist,
+        'add-song-modal': AddSongModal
     },
     data() {
         return {
@@ -51,7 +72,8 @@ export default {
             newUrl: null,
             newName: null,
             loading: true,
-            admin: false
+            admin: false,
+            showAddSongModal: false
         }
     },
     watch: {

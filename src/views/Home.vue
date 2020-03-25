@@ -4,11 +4,14 @@
         <p>
             This is my own personal website that I use for posting blogs as well as trying out new 
             stuff and playing around with my knowledge in programming and web developing. 
-            It uses Vuejs, a PHP backend and a MySQL Database. Feel free to 
-            visit the Music page, read my blogs or leave a comment. More content coming soon! 
+            Feel free to visit the Music page, my Album where I post my drawings, read my blogs or 
+            leave a comment. More content coming soon! 
         </p>
         <div style="display: flex">
             <div style="width: 49%; display: inline-block">
+                <div style="height: 375px" class="content has-text-centered">
+                    <img src="http://localhost:8080/public/fantasy.png" alt="Dragon">
+                </div>
                 <div>
                     <section class="website-content-section">
                         <h3>Latest Blog Post</h3>
@@ -80,7 +83,7 @@
             @song-was-updated="getFavoriteSong"
         ></change-favorite-song-modal>
         <div>
-            Favicon made by 
+            Dragon Icon made by 
             <a href="https://www.flaticon.com/authors/icongeek26" title="Icongeek26">
                 Icongeek26
             </a>
@@ -198,11 +201,12 @@ export default {
     .website-content-section {
         border-color: #d2d2d2; 
         border-width: 1px; 
-        margin: 20px; 
+        margin: 10px; 
         padding: 10px; 
         border-style: solid;
         border-radius: 4px;
-        width: 100%
+        width: 100%;
+        max-height: 690px;
     }
     .blog-post-link {
         color: #57f9ff;

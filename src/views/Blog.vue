@@ -80,10 +80,9 @@
                             <b-table-column field="created_at" label="Created at">
                                 {{ $date(props.row.created_at).format('DD/MM/YYYY HH:mm') }}
                             </b-table-column>
-                            <b-table-column field="actions" label="Actions" style="display: flex">
+                            <b-table-column v-if="admin" field="actions" label="Actions" style="display: flex">
                                 <b-tooltip label="Edit" position="is-bottom">
-                                    <b-button 
-                                        v-if="admin"
+                                    <b-button
                                         type="is-white" 
                                         outlined
                                         style="color: black; margin: 5px" 
@@ -94,8 +93,7 @@
                                     </b-button>
                                 </b-tooltip>
                                 <b-tooltip label="Delete" position="is-bottom">
-                                    <b-button 
-                                        v-if="admin"
+                                    <b-button
                                         type="is-danger"
                                         style="margin: 5px" 
                                         @click="confirmDeleteBlogPost(props.row.id)"
