@@ -50,7 +50,9 @@ export default {
         }
     },
     created() {
-        this.song = this.currentSong;
+        if (this.currentSong) {
+            this.song = this.currentSong;
+        }
     },
     methods: {
         update() {

@@ -13,7 +13,7 @@
                     <img src="../../public/fantasy.png" alt="Dragon">
                 </div>
                 <div>
-                    <section v-if="latestBlogPost" class="website-content-section">
+                    <section v-if="latestBlogPost && latestBlogPost.name" class="website-content-section">
                         <h3>Latest Blog Post</h3>
                         <h5>in <b>{{ latestBlogPost.category.name }}</b></h5>
                         <br>
@@ -77,11 +77,18 @@
                 </div>
             </div>
         </div>
-        <change-favorite-song-modal 
-            :current-song="song" 
-            v-model="showEditSongModal" 
-            @song-was-updated="getFavoriteSong"
-        ></change-favorite-song-modal>
+        <b-modal 
+            :active.sync="showEditSongModal"
+            has-modal-card
+            trap-focus
+            aria-role="dialog"
+            aria-modal
+        >
+            <edit-favorite-song-modal 
+                :current-song="song" 
+                @song-was-updated="getFavoriteSong"
+            ></edit-favorite-song-modal>
+        </b-modal>
         <div>
             Dragon Icon made by 
             <a href="https://www.flaticon.com/authors/icongeek26" title="Icongeek26">
@@ -96,11 +103,11 @@
 </template>
 
 <script>
-import ChangeFavoriteSongModal from '../components/changeFavoriteSongModal/ChangeFavoriteSongModal';
+import EditFavoriteSongModal from '../components/EditFavoriteSongModal';
 
 export default {
     components: {
-        'change-favorite-song-modal': ChangeFavoriteSongModal
+        'edit-favorite-song-modal': EditFavoriteSongModal
     },
     data() {
         return {
