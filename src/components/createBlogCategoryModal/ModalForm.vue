@@ -5,7 +5,8 @@
                 <p class="modal-card-title">Add new blog category</p>
             </header>
             <section class="modal-card-body">
-                <b-field label="Name">
+                <b style="color: black">Name</b>
+                <b-field>
                     <b-input
                         type="name"
                         v-model="name"
@@ -42,6 +43,7 @@ export default {
                 .then(response => {
                     this.$buefy.toast.open(response.data.message);
                     this.$parent.close();
+                    this.$emit('category-was-created');
                 })
                 .catch(error => {
                     console.log(error);

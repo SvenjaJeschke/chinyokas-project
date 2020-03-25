@@ -10,7 +10,7 @@
             aria-role="dialog"
             aria-modal
         >
-            <modal-form></modal-form>
+            <modal-form @category-was-created="$emit('category-was-created')"></modal-form>
         </b-modal>
     </div>
 </template>

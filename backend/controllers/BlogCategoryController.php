@@ -13,6 +13,23 @@ class BlogCategoryController {
         return 'Please enter a valid name.';
     }
 
+    public function update($category) {
+        $pdo = Database::connect();
+        if ($category['name']) {
+            $statement = $pdo->prepare("update blog_categories set name = '{$category['name']}' where id = {$category['id']}");
+            $statement->execute();
+            return "The categorys name was changed to {$category['name']}";
+        }
+        return 'Please enter a valid name.';
+    }
+
+    public function delete($id) {
+        $pdo = Database::connect();
+        $deleteCategory = $pdo->prepare("delete from blog_categories where id = {$id}");
+        $deleteCategory->execute();
+        return 'Category was deleted.';
+    }
+
     public function allWithPosts() {
         $pdo = Database::connect();
         $categoryStatement = $pdo->prepare('select * from blog_categories');
