@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start": "node server.js && npm run serve -- --port 8080"
+    "start": "node server.js && node backend.js"
   },
   "dependencies": {
     "@caohenghu/vue-colorpicker": "^1.2.4",
