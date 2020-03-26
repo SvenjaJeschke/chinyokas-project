@@ -99,7 +99,7 @@ export default {
             const password = localStorage.getItem('password');
             this.axios
                 .get(
-                  '/api/auth/checkadmin.php',
+                  '/backend/api/auth/checkadmin.php',
                   { params: { password: password } },
                   { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
                 .then(response => {
@@ -108,7 +108,7 @@ export default {
         },
         getTheme() {
             this.axios
-                .get('/api/theme/current.php')
+                .get('/backend/api/theme/current.php')
                 .then(response => {
                     this.theme = response.data;
                 })
