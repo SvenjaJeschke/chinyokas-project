@@ -19,6 +19,7 @@
             />
         </b-field>
         <div class="content has-text-centered">
+            Uploads are limited to max. 2MB file size. <br>
             <b-field v-if="!post.image">
                 <input type="file" ref="file" @change="onChange">
             </b-field>
