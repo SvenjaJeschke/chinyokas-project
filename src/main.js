@@ -8,7 +8,7 @@ import VueAxios from 'vue-axios';
 import VueDayjs from 'vue-dayjs-plugin';
 import TextareaAutosize from 'vue-textarea-autosize';
 
-axios.defaults.baseURL = 'https://chinyokas-project.herokuapp.com/';
+//axios.defaults.baseURL = 'https://chinyokas-project.herokuapp.com/';
  
 Vue.use(TextareaAutosize);
 Vue.use(VueAxios, axios);
