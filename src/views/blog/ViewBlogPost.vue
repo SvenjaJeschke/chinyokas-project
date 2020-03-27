@@ -31,7 +31,9 @@
                 </div>
             </div>
             <footer class="card-footer">
-                <a class="card-footer-item" @click="showCommentField = !showCommentField">Comment</a>
+                <a class="card-footer-item" @click="showCommentField = !showCommentField">
+                    Comment
+                </a>
             </footer>
         </div>
         <br>
@@ -96,7 +98,7 @@ export default {
         return {
             post: {},
             admin: false,
-            showCommentField: false,
+            showCommentField: true,
             newComment: {
                 username: null,
                 content: null,
