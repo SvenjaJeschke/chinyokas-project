@@ -66,7 +66,7 @@ export default {
             this.axios
                 .post('/backend/api/image-posts/create.php', 
                     formData,
-                    { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
+                    { headers: { 'Content-Type': 'multipart/form-data' } }
                 )
                 .then(response => {
                     this.$buefy.toast.open(response.data.message);
