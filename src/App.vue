@@ -10,7 +10,7 @@
     <b-navbar :type="theme.navbartype">
         <template slot="brand">
             <b-navbar-item tag="router-link" to="/">
-                <img :src="icon" alt="Website Icon" style="margin-right: 10px">
+                <img src="../public/dragon-black.png" alt="Website Icon" style="margin-right: 10px">
                 Chinyokas Project
             </b-navbar-item>
         </template>
