@@ -11,7 +11,7 @@
             <div style="width: 49%; display: inline-block">
                 <div style="height: 350px" class="content has-text-centered">
                     <img src="../../public/fantasy.png" alt="Dragon">
-                    <img src="/backend/api/photo_2019-12-15_20-20-26.png" alt="test picture">
+                    <img src="/js/photo_2019-12-15_20-20-26.png" alt="test picture">
                 </div>
                 <div>
                     <section v-if="latestBlogPost && latestBlogPost.title" class="website-content-section">
