@@ -97,6 +97,7 @@ export default {
     methods: {
         checkAdmin() {
             const password = localStorage.getItem('password');
+            console.log(password);
             if (password) {
                 this.axios
                     .get(
