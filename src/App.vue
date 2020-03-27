@@ -108,7 +108,7 @@ export default {
         },
         getTheme() {
             this.axios
-                .get('/meow/backend/api/theme/current.php')
+                .get('/backend/api/theme/current.php')
                 .then(response => {
                     this.theme = response.data;
                 })
