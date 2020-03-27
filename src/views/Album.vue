@@ -106,14 +106,18 @@ export default {
         },
         checkAdmin() {
             const password = localStorage.getItem('password');
-            this.axios
-                .get(
+            if (password) {
+                this.axios
+                    .get(
                     '/backend/api/auth/checkadmin.php',
                     { params: { password: password } },
                     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
-                .then(response => {
+                    .then(response => {
                     this.admin = response.data.admin;
-                })
+                    })
+            } else {
+                this.admin = false;
+            }
         },
         confirmDelete(id) {
             this.$buefy.dialog.confirm({
