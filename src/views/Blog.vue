@@ -74,6 +74,9 @@
                                     {{ props.row.title }}
                                 </router-link>
                             </b-table-column>
+                            <b-table-column field="comment_count" label="Comments">
+                                {{ props.row.comment_count }}
+                            </b-table-column>
                             <b-table-column field="likes" label="Likes">
                                 {{ props.row.likes ? props.row.likes : 0 }}
                             </b-table-column>
