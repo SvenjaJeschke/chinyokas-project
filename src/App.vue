@@ -40,7 +40,7 @@ export default {
         return {
             theme: null,
             admin: false,
-            icon: '../public/dragon-black.png'
+            icon: 'dragon-black.png'
         }
     },
     computed: {
@@ -114,9 +114,9 @@ export default {
                 )
                 .then(response => {
                     if (['is-dark', 'is-black'].includes(response.data.navbarType)) {
-                        this.icon = '../public/dragon-purple.png';
+                        this.icon = 'dragon-purple.png';
                     } else {
-                        this.icon = '../public/dragon-black.png';
+                        this.icon = 'dragon-black.png';
                     }
                     this.theme = response.data;
                 })
