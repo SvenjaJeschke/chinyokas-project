@@ -39,8 +39,7 @@ export default {
     data() {
         return {
             theme: null,
-            admin: false,
-            icon: 'dragon-black.png'
+            admin: false
         }
     },
     computed: {
@@ -72,6 +71,13 @@ export default {
                 navItems = navItems.concat(adminItems);
             }
             return navItems;
+        },
+        icon() {
+            if (['is-dark', 'is-black'].includes(this.theme.navbartype)) {
+                return 'dragon-purple.png';
+            } else {
+                return 'dragon-black.png';
+            }
         }
     },
     watch: {
@@ -106,18 +112,12 @@ export default {
             }
         },
         getTheme() {
-            this.theme = null;
             this.axios
                 .get(
                     '/backend/api/theme/current.php',
                     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
                 )
                 .then(response => {
-                    if (['is-dark', 'is-black'].includes(response.data.navbarType)) {
-                        this.icon = 'dragon-purple.png';
-                    } else {
-                        this.icon = 'dragon-black.png';
-                    }
                     this.theme = response.data;
                 })
                 .catch(error => {
