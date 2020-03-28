@@ -10,7 +10,7 @@
     <b-navbar :type="theme.navbartype">
         <template slot="brand">
             <b-navbar-item tag="router-link" to="/">
-                <img src="../public/dragon-black.png" alt="Website Icon" style="margin-right: 10px">
+                <img v-if="theme" :src="icon" alt="Website Icon" style="margin-right: 10px">
                 Chinyokas Project
             </b-navbar-item>
         </template>
@@ -38,8 +38,9 @@ export default {
     name: 'App',
     data() {
         return {
-            theme: {},
-            admin: false
+            theme: null,
+            admin: false,
+            icon: '../public/dragon-black.png'
         }
     },
     computed: {
@@ -71,13 +72,6 @@ export default {
                 navItems = navItems.concat(adminItems);
             }
             return navItems;
-        },
-        icon() {
-            if (['is-dark', 'is-black'].includes(this.theme.navbarType)) {
-                return '../public/dragon-purple.png';
-            } else {
-                return '../public/dragon-black.png';
-            }
         }
     },
     watch: {
@@ -86,8 +80,8 @@ export default {
         }
     },
     created() {
-        this.checkAdmin();
         this.getTheme();
+        this.checkAdmin();
     },
     mounted() {
         EventBus.$on('theme-was-changed', () => {
@@ -112,12 +106,18 @@ export default {
             }
         },
         getTheme() {
+            this.theme = null;
             this.axios
                 .get(
                     '/backend/api/theme/current.php',
                     { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
                 )
                 .then(response => {
+                    if (['is-dark', 'is-black'].includes(response.data.navbarType)) {
+                        this.icon = '../public/dragon-purple.png';
+                    } else {
+                        this.icon = '../public/dragon-black.png';
+                    }
                     this.theme = response.data;
                 })
                 .catch(error => {
